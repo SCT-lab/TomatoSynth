@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7dc559cdbcfcee44ba2d448f77ad82f, type: 3}
+  m_Name: Power Lines Mesh Generation Profile
+  m_EditorClassIdentifier: 
+  cullingRatio: 0.05
+  baseMeshLODS:
+  - {fileID: 4300000, guid: 5e380a5e17d55be47ac949be14ac246d, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 23b267d2e725368488df998f2ab98f3f, type: 2}
+  meshColliders: []
+  physicMaterials: []

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9a8d957e0967b48acf578edf6d62a9, type: 3}
+  m_Name: SMR-Default-Theme
+  m_EditorClassIdentifier: 
+  supportsVerticalBuilding: 1
+  zoomOnClick: 1
+  zoomLevel: 20
+  splineColor: {r: 1, g: 1, b: 1, a: 1}
+  showShortcutMenu: 1
+  buttonSize: 50
+  AddIcon: {fileID: 2800000, guid: 872cdfbb7e977db47a470916972b23c2, type: 3}
+  DeleteIcon: {fileID: 2800000, guid: 4b85a2cc451e04c479fdf6a2ea12a29e, type: 3}
+  ArrowUpIcon: {fileID: 2800000, guid: 8100d8ffb6a05624eb4840800df5815f, type: 3}
+  CurvedArrowUpIcon: {fileID: 2800000, guid: e1f54bd9dfcfb66498a7e61adb75aa4b, type: 3}
+  CurvedArrowDownIcon: {fileID: 2800000, guid: 5adc4ce08d965a941a6daee0f29f8711, type: 3}
+  CurvedArrowLeftIcon: {fileID: 2800000, guid: d2f6f2e69bbfd084fb7ded44b724396a, type: 3}
+  CurvedArrowRightIcon: {fileID: 2800000, guid: 1158b381077dea24bace942990fd2213,
+    type: 3}
+  MeshIcon: {fileID: 2800000, guid: c10a18bf07c205e4aaee85fba4264aa2, type: 3}
+  LogIcon: {fileID: 2800000, guid: caee9158f08886f4ba84a80d289c224d, type: 3}
+  SmallAddIcon: {fileID: 2800000, guid: bc3efc72416abf847a8ef8087e820a4a, type: 3}
+  SmallDeleteIcon: {fileID: 2800000, guid: 3a056637c7ae88b48bd207bff51c9249, type: 3}
+  SmallArrowUpIcon: {fileID: 2800000, guid: 160a905ad854105488c6649f2e1e2883, type: 3}
+  SmallCurvedArrowUpIcon: {fileID: 2800000, guid: 14e6dcb37510c594aafc8d22971d7a79,
+    type: 3}
+  SmallCurvedArrowDownIcon: {fileID: 2800000, guid: 9cf51d4a3ca9bc943b13ba4e4c0981f1,
+    type: 3}
+  SmallCurvedArrowLeftIcon: {fileID: 2800000, guid: 62b57eaeddcd48648ad36237e292787c,
+    type: 3}
+  SmallCurvedArrowRightIcon: {fileID: 2800000, guid: 9177ffc84a65b3a4bb524116102e5231,
+    type: 3}
+  SmallMeshIcon: {fileID: 2800000, guid: 993f4af76d1a60e44964e91886546fe9, type: 3}
+  SmallLogIcon: {fileID: 2800000, guid: 1a384567ef45a8a49be038d479f08875, type: 3}
+  inputBoxPosX: 10
+  inputBoxPosY: 10
+  button1PosX: 10
+  button1PosY: 80
+  button2PosX: 70
+  button2PosY: 80
+  button3PosX: 10
+  button3PosY: 140
+  button4PosX: 70
+  button4PosY: 140
+  button5PosX: 10
+  button5PosY: 200
+  button6PosX: 70
+  button6PosY: 200
+  button7PosX: 10
+  button7PosY: 260
+  button8PosX: 70
+  button8PosY: 260

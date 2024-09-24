@@ -1,0 +1,28 @@
+{
+    "name": "Unity.Splines",
+    "rootNamespace": "UnityEngine.Splines",
+    "references": [
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:2665a8d13d1b3f18800f46e256720795"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.physics",
+            "expression": "",
+            "define": "UNITY_PHYSICS_MODULE"
+        },
+        {
+            "name": "com.unity.burst",
+            "expression": "1.7.4",
+            "define": "UNITY_BURST_ENABLED"
+        }
+    ],
+    "noEngineReferences": false
+}
