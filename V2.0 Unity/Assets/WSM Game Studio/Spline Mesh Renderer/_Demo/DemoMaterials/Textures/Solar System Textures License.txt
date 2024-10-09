@@ -1,0 +1,8 @@
+Solar System Textures downloaded from https://www.solarsystemscope.com/textures/ under the creative commons license:
+
+https://creativecommons.org/licenses/by/4.0/
+
+The CC license applies ONLY to the solar system textures
+
+For more info about the license of other assets included in the package, please, refer to the documentation.
+

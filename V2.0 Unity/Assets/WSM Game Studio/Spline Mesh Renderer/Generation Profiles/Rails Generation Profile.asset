@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7dc559cdbcfcee44ba2d448f77ad82f, type: 3}
+  m_Name: Rails Generation Profile
+  m_EditorClassIdentifier: 
+  cullingRatio: 0.05
+  baseMeshLODS:
+  - {fileID: 4300000, guid: c5d02854e9ac5244d84033681dc79768, type: 3}
+  - {fileID: 4300000, guid: f54b4a4127623ed4290f88db4f225e9f, type: 3}
+  - {fileID: 4300000, guid: a579be694ae93294481c2cf2eab7364f, type: 3}
+  materials:
+  - {fileID: 2100000, guid: c8c1f5645d0f6564ea8b06d548757a4a, type: 2}
+  meshColliders: []
+  physicMaterials: []
+  startCap: {fileID: 9011821741233126366, guid: 5aa69a51505385f469eb47c13b858c8a,
+    type: 3}
+  endCap: {fileID: 5505777321082821240, guid: c17adc214c21f4b4591dde2b03544d5b, type: 3}
