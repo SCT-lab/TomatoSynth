@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7dc559cdbcfcee44ba2d448f77ad82f, type: 3}
+  m_Name: Road 2 lanes
+  m_EditorClassIdentifier: 
+  cullingRatio: 0.05
+  baseMeshLODS:
+  - {fileID: 4300000, guid: 13c252abe363e844c8c3ea6ea8ec42bd, type: 3}
+  - {fileID: 4300000, guid: aef1280ed61775a47b4a82f97346fdc3, type: 3}
+  - {fileID: 4300000, guid: ebfbe9b32e1c5de4a8d1c35a3aca2e3c, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 3e9e46266a9631448a06a96496e1fdda, type: 2}
+  meshColliders:
+  - {fileID: 4300000, guid: ebfbe9b32e1c5de4a8d1c35a3aca2e3c, type: 3}
+  physicMaterials: []
+  startCap: {fileID: 0}
+  endCap: {fileID: 0}
