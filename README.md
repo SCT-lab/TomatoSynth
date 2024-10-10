@@ -5,16 +5,17 @@
 ## What is TomatoSynth ?
 
 ## Features
-
+<p align="center">
 ![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TS.gif)
+</p>
 
-* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TC.png" width="20"> Stubstrate preparation - involving correct ingredient mixtures, temperature control
-* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/VC.png" width="20"> Stubstrate preparation - involving correct ingredient mixtures, temperature control
-* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/ML.png" width="20"> Stubstrate preparation - involving correct ingredient mixtures, temperature control
-* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/GC.png" width="20"> Stubstrate preparation - involving correct ingredient mixtures, temperature control
+* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TC.png" width="20"> ... 
+* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/VC.png" width="20"> ... 
+* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/ML.png" width="20"> ... 
+* <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/GC.png" width="20"> ... 
 
 ## Installation
-
+TomatoSynth can be run as a .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats.
 
 
 ## Development Work
