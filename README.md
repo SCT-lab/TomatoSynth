@@ -6,7 +6,7 @@
 
 ## Features
 <p align="center">
-![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TS.gif)
+ <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TS.gif>
 </p>
 
 * <img src="https://github.com/SCT-lab/TomatoSynth/blob/main/Images/TC.png" width="20"> ... 
