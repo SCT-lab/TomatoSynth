@@ -19,7 +19,7 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
 </p>
 
 ## Installation
-TomatoSynth can be run as a .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats. When launching the application or running the software within Unity itself, a script (Positioning_tomatoes) takes the input tomato models (three prefabs total) and places them in rows. For each compartment, unique tomato models can be given as input. Variation in the rows is realised by starting each row on a different start position (difference of 2 cm compared to previous row); and each plant in the row is given a 45 degrees difference to its neighbour. 
+TomatoSynth can be run as an .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats. When launching the application or running the software within Unity itself, a script (Positioning_tomatoes) takes the input tomato models (three prefabs total) and places them in rows. For each compartment, unique tomato models can be given as input. Variation in the rows is realised by starting each row on a different start position (difference of 2 cm compared to previous row); and each plant in the row is given a 45 degrees difference to its neighbour. 
 
 
 ## Development Work
