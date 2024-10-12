@@ -21,11 +21,11 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
 ## Installation
 TomatoSynth can be run as an .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats.
 
-1a) <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>.
-1b) The recording data will be put within the TomatoSynth_Data folder in two folders Screenshot and ScreenshotGT.
+<b>1a)</b> <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>.<br>
+<b>1b)</b> The recording data will be put within the TomatoSynth_Data folder in two folders Screenshot and ScreenshotGT.<br>
 
-2a) <u>Unity:</u> content of the V2.0 Unity folder can be added in Unity Hub. Unity version <b>2022.23f1</b> needs to be installed on the PC. Older versions might work too.
-2b) Upon launching for the first time, packages need to be installed. This might take some time. The Unity scene can be found in the <u>Assets - Scenes folder (Menu / StartScene)</u>.
+<b>2a)</b> <u>Unity:</u> content of the V2.0 Unity folder can be added in Unity Hub. Unity version <b>2022.23f1</b> needs to be installed on the PC. Older versions might work too.<br>
+<b>2b)</b> Upon launching for the first time, packages need to be installed. This might take some time. The Unity scene can be found in the <u>Assets - Scenes folder (Menu / StartScene)</u>.
 
 When launching the application or running the software within Unity itself, a script (Positioning_tomatoes) takes the input tomato models (three prefabs total) and places them in rows. For each compartment, unique tomato models can be given as input. Variation in the rows is realised by starting each row on a different start position (difference of 2 cm compared to previous row); and each plant in the row is given a 45 degrees difference to its neighbour. 
 
