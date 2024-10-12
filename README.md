@@ -22,7 +22,7 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
 TomatoSynth can be run as an .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats.
 
 <b>1a)</b> <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>.<br>
-<b>1b)</b> The recording data will be put within the TomatoSynth_Data folder in two folders Screenshot and ScreenshotGT.<br>
+<b>1b)</b> The recording data will be put within the TomatoSynth_Data folder in two folders titled Screenshot and ScreenshotGT.<br>
 
 <b>2a)</b> <u>Unity:</u> content of the V2.0 Unity folder can be added in Unity Hub. Unity version <b>2022.23f1</b> needs to be installed on the PC. Older versions might work too.<br>
 <b>2b)</b> Upon launching for the first time, packages need to be installed. This might take some time. The Unity scene can be found in the <u>Assets - Scenes folder (Menu / StartScene)</u>.
