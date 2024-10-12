@@ -104,22 +104,25 @@ public class Positioning_tomatoes : MonoBehaviour
                 {
                     GameObject currentPlantPrefab = plants[b][i % plants[b].Count]; // Picking plants from the list
                     GameObject currentPlantPrefab1 = plants_gt[b][i % plants_gt[b].Count]; // Picking plants from the list
-                    float rotationAngle = (a * 15.0f) + (i * 60.0f); // Creating variation in the rotation of plants
-                    
+                    //float rotationAngle = (a * 15.0f) + (i * 60.0f); // Creating variation in the rotation of plants
+                    float rotationAngle = (a * Random.Range(-15f, 15f)) + (i * Random.Range(-60f, 60f)); // Creating variation in the rotation of plants
+
                     float xValue = startLocationx + (a * 0.1f) + (i * 9.0f); // Determination of x position of each plant
                     float zValue = startLocationz + (a * -9.7f); // Determination of z position
                     
                     // Instantiate the entire plant prefab (which includes the pot and plant)
                     GameObject newPlantInstance = Instantiate(currentPlantPrefab, new Vector3(xValue, 7, zValue), Quaternion.identity, newRow.transform);
+                    newPlantInstance.transform.SetParent(newRow.transform, false);
                     plant_non_gt.Add(newPlantInstance);
                     
                     GameObject newPlantInstance1 = Instantiate(currentPlantPrefab1, new Vector3(xValue, 7, zValue), Quaternion.identity, newRow.transform);
+                    newPlantInstance1.transform.SetParent(newRow.transform, false);
                     plant_gt.Add(newPlantInstance1);
 
                     newPlantInstance1.SetActive(false);
                     // Find the plant part inside the instantiated prefab
                     Transform plantTransform = newPlantInstance.transform.Find("MainPlant");
-                    Transform plantTransform1 = newPlantInstance.transform.Find("MainPlant");
+                    Transform plantTransform1 = newPlantInstance1.transform.Find("MainPlant");
                     
                     if (plantTransform != null)
                     {
@@ -302,12 +305,6 @@ public void OrganizeAndSortPlantsIntoRows()
     }
 
     Debug.Log("Plants organized into rows without changing their positions.");
-}
-
-
-
-
-
-
+    }
 }
 
