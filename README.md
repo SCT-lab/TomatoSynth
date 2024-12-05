@@ -1,5 +1,5 @@
 # TomatoSynth V1.0
-![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/greenhouse3.jpg)
+![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/greenhouse3.png)
 
 
 ## What is TomatoSynth ?
