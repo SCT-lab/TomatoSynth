@@ -33,6 +33,9 @@ When launching the application or running the software within Unity itself, a sc
 ## Development Work
 Development work by Corné Talen and Juriaan Wolfers, project managed by Will Hurst (will.hurst@wur.nl) and Gert Kootstra (gert.kootstra@wur.nl).
 
+You are free to use this project for academic research but please reference this project as follows:
+[Corné Talen, Juriaan Wolfers, William Hurst, Gert Kootstra, TomatoSynth V1.1, Social Creative Technologies Lab, Wageningen University, 2024, https://github.com/SCT-lab/TomatoSynth]
+
 <p align="center">
   <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/DigiFungi/blob/main/images/SCT-WUR.png" alt="SCT Lab" width="100"></a>
   <a href="https://www.wur.nl/en.htm"><img src="https://github.com/SCT-lab/DigiFungi/blob/main/images/Wur-logo.png" alt="WUR" width="100"></a>
