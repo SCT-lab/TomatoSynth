@@ -1,5 +1,5 @@
 # TomatoSynth V1.0
-![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/greenhouse3.jpg)
+![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/greenhouse3.png)
 
 
 ## What is TomatoSynth ?
@@ -21,7 +21,7 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
 ## Installation
 TomatoSynth can be run as an .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats.
 
-<b>1a)</b> <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>.<br>
+<b>1a)</b> <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>. Unzip the files within the Data folder - not in a new folder.<br>
 <b>1b)</b> The recording data will be put within the TomatoSynth_Data folder in two folders titled Screenshot and ScreenshotGT.<br>
 
 <b>2a)</b> <u>Unity:</u> content of the V2.0 Unity folder can be added in Unity Hub. Unity version <b>2022.23f1</b> needs to be installed on the PC. Older versions might work too.<br>
@@ -32,6 +32,9 @@ When launching the application or running the software within Unity itself, a sc
 
 ## Development Work
 Development work by Corné Talen and Juriaan Wolfers, project managed by Will Hurst (will.hurst@wur.nl) and Gert Kootstra (gert.kootstra@wur.nl).
+
+You are free to use this project for academic research but please reference this project as follows:
+[Corné Talen, Juriaan Wolfers, William Hurst, Gert Kootstra, TomatoSynth V1.1, Social Creative Technologies Lab, Wageningen University, 2024, https://github.com/SCT-lab/TomatoSynth]
 
 <p align="center">
   <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/DigiFungi/blob/main/images/SCT-WUR.png" alt="SCT Lab" width="100"></a>
