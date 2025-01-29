@@ -20,6 +20,7 @@ public class Menu2 : MonoBehaviour
     public Camerasystem cameraSystem;
     public Slider speedSlider;
     public TMP_Text textSpeedSlider;
+    public TMP_Text textCompressionSlider;
     
     public GameObject[] canvasUI;
 
@@ -60,6 +61,8 @@ public class Menu2 : MonoBehaviour
 
         recorderControllerSettings.AddRecorderSettings(imageRecorder);
         recorderControllerSettings.SetRecordModeToManual();     */    
+        PlayerPrefs.SetInt("CompressionValue", 25);
+        PlayerPrefs.SetFloat("Waypoints", 129);
     }
 
     // Update is called once per frame
@@ -194,6 +197,22 @@ public class Menu2 : MonoBehaviour
             textSpeedSlider.text = speedValue.ToString("F0");
         }
         
+    }
+
+    public void ChangeCompression(float value)
+    {
+        int var = System.Convert.ToInt32(value);
+        PlayerPrefs.SetInt("CompressionValue", var);
+        textCompressionSlider.text = value.ToString("F0");
+    }
+
+    public void ChangeResolution(int value)
+    {
+        PlayerPrefs.SetInt("ResolutionImage", value);
+
+        if(value == 0) {recordingScreenshots.resWidth = 1920; recordingScreenshots.resHeight = 1080;}
+        if(value == 1) {recordingScreenshots.resWidth = 1280; recordingScreenshots.resHeight = 720;}
+        if(value == 2) {recordingScreenshots.resWidth = 640; recordingScreenshots.resHeight = 480;}
     }
 
 /*      public void StartRecording()

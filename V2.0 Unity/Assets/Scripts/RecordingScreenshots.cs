@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using System.IO;
 using UnityEngine;
 using TMPro;
+using Newtonsoft.Json;
 
 public class RecordingScreenshots : MonoBehaviour
 {
@@ -28,6 +29,16 @@ public class RecordingScreenshots : MonoBehaviour
     private string screenshotFilenameGT;
 
     private RenderTexture renderTexture;
+
+    public CocoDataset cocoDataset = new CocoDataset();
+    public MeshCollider[] posCollidersTomatoesGT;
+    public MeshCollider[] visibleTomatoes;
+    public List<TomatoData> bbBox = new List<TomatoData>();
+
+    public int resWidth = 1280;
+    public int resHeight = 720;
+
+    public TMP_Text textWayPoints;
     // Start is called before the first frame update
     
     public void StartRecording(bool bool_value)
@@ -49,7 +60,7 @@ public class RecordingScreenshots : MonoBehaviour
             
                 menu2.DisableOverviewCamera(false);
 
-                renderTexture = RenderTexture.GetTemporary(1280, 720, 24);
+                renderTexture = RenderTexture.GetTemporary(resWidth, resHeight, 24);
 
                 StartCoroutine(CaptureScreenshots());
             }
@@ -83,6 +94,23 @@ public class RecordingScreenshots : MonoBehaviour
         }
     }
 
+    public void ChangeWaypoints(string value)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            Debug.LogError("Input is null or empty.");
+            PlayerPrefs.SetInt("Waypoints", 129);
+            return;
+        }
+        else
+        {
+            int var = System.Convert.ToInt32(value);
+            PlayerPrefs.SetInt("Waypoints", var);
+            textWayPoints.text = var.ToString("F0");
+            Debug.Log($"Capture interval set to: {value}");
+        }
+    }
+
         // CHATGPT GENERATED PARTIALLY
     public IEnumerator CaptureScreenshots()
     {
@@ -105,7 +133,7 @@ public class RecordingScreenshots : MonoBehaviour
             Directory.CreateDirectory(screenshotsFolder1);
         }
 
-        while (isRecording && cameraSystem.currentWaypointIndex != cameraSystem.waypoints.Count)
+        while (isRecording && cameraSystem.currentWaypointIndex != PlayerPrefs.GetInt("Waypoints", 129))
         {
             yield return new WaitForFixedUpdate();
             // Define the filename with an incrementing number
@@ -115,7 +143,9 @@ public class RecordingScreenshots : MonoBehaviour
             {
                 posTomatoes.ActivateGT(false);
                 cameraSystem.ManageRowVisibility();
-                yield return new WaitForEndOfFrame();
+
+                //yield return new WaitForEndOfFrame();
+                yield return null;
 
                 screenshotFilename = Path.Combine(screenshotsFolder, $"screenshot_{screenshotCount:D4}.png");
                 screenshotFilenameGT = Path.Combine(screenshotsFolder1, $"screenshotGT_{screenshotCount:D4}.png");
@@ -129,6 +159,7 @@ public class RecordingScreenshots : MonoBehaviour
                 } );
 
                 posTomatoes.ActivateGT(true);
+                
                 cameraSystem.ManageRowVisibility();
 
                 // GT
@@ -147,7 +178,7 @@ public class RecordingScreenshots : MonoBehaviour
                 textScreenshotCount.text = screenshotCount.ToString("F0");
             }
         }
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
     }
 
     void OnCompleteReadback(AsyncGPUReadbackRequest request, string filename)
@@ -155,10 +186,12 @@ public class RecordingScreenshots : MonoBehaviour
         Texture2D screenshot = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
         screenshot.LoadRawTextureData(request.GetData<byte>());
         screenshot.Apply();
-            
+        
+        int tempInt = 100 - PlayerPrefs.GetInt("CompressionValue", 0);
+        byte[] bytes = screenshot.EncodeToJPG(tempInt);
 
-        byte[] bytes = screenshot.EncodeToJPG(75);
-        File.WriteAllBytes(filename, bytes);
+        System.Threading.Tasks.Task.Run(() => File.WriteAllBytes(filename, bytes));
+        //File.WriteAllBytes(filename, bytes);
                 
         Debug.Log($"Screenshot saved to: {screenshotFilename}");
 
@@ -171,17 +204,59 @@ public class RecordingScreenshots : MonoBehaviour
         screenshotGT.LoadRawTextureData(request.GetData<byte>());
         screenshotGT.Apply();
                 
-        byte[] bytesGT = screenshotGT.EncodeToJPG(75);
+        int tempInt1 = 100 - PlayerPrefs.GetInt("CompressionValue", 0);
+        byte[] bytesGT = screenshotGT.EncodeToJPG(tempInt1);
 
-        File.WriteAllBytes(filenameGT, bytesGT);
+        System.Threading.Tasks.Task.Run(() => File.WriteAllBytes(filenameGT, bytesGT));
+        //File.WriteAllBytes(filenameGT, bytesGT);
 
+        CocoImage cocoImage = new CocoImage
+        {
+            id = screenshotCount,
+            file_name = Path.GetFileName(filenameGT),
+            width = screenshotGT.width,
+            height = screenshotGT.height
+        };
+    
+        cocoDataset.images.Add(cocoImage);
+        PreCalculateBoundingBoxes();
+
+        AddBB(cocoImage.id);
+        
+        SaveCocoJson();
                 
         Debug.Log($"Screenshot saved to: {screenshotFilenameGT}");
 
          // Clean up the screenshot texture
         Destroy(screenshotGT);
-    }
 
+        void SaveCocoJson()
+        {
+            string jsonOutput = JsonConvert.SerializeObject(cocoDataset, Formatting.Indented);
+            string jsonPath = Path.Combine(Application.dataPath, "Screenshots", "annotations.json");
+ 
+            File.WriteAllText(jsonPath, jsonOutput);
+            Debug.Log($"COCO JSON file saved to: {jsonPath}");
+        }
+
+        void AddBB(int cocoID)
+        {
+            // Add bounding boxes for each tomato to the annotations list
+            foreach (var tomatoData in bbBox)
+            {
+                CocoAnnotation cocoAnnotation = new CocoAnnotation
+                {
+                    id = tomatoData.id,
+                    image_id = cocoID,  // The ID of the image this annotation is related to
+                    category_id = 1,    // Assuming category_id is 1 for tomatoes; you can change it accordingly
+                    bbox = tomatoData.bbox, // The bounding box [x, y, width, height]
+                    area = tomatoData.bbox[2] * tomatoData.bbox[3] // Calculate the area (width * height)
+                };
+
+                cocoDataset.annotations.Add(cocoAnnotation);
+            }
+        }
+    }
 
     public void StopRecording()
     {
@@ -195,6 +270,96 @@ public class RecordingScreenshots : MonoBehaviour
 
             mainCamera.targetDisplay = 0;
             mainCamera2.targetDisplay = 0;
+        }    
+    }
+
+     bool IsVisible(Vector3 pos, Vector3 boundSize, Camera mainCamera)
+    {
+        var bounds = new Bounds(pos, boundSize);
+        var planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
+        return GeometryUtility.TestPlanesAABB(planes, bounds);
+    }
+
+    public void PreCalculateBoundingBoxes()
+    {
+        // Get the frustum planes from the camera
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);        
+        posCollidersTomatoesGT = FindObjectsOfType<MeshCollider>();
+        List<MeshCollider> visibleTomatoes = new List<MeshCollider>();
+        // Loop through each collider to check visibility
+        foreach (MeshCollider collider in posCollidersTomatoesGT)
+        {
+            if (IsVisible(collider.transform.position, collider.bounds.size, mainCamera))
+            {
+                // If visible, add to the list of visible tomatoes
+                visibleTomatoes.Add(collider);
+            }
+        }
+
+        bbBox.Clear();
+        // Store the bounding boxes and other necessary data
+        foreach (MeshCollider collider in visibleTomatoes)
+        {
+            // Get the bounds of the collider
+            Bounds colliderBounds = collider.bounds;
+
+            // Convert the bounds to a bounding box in COCO format: [x, y, width, height]
+            float xMin = colliderBounds.min.x;
+            float yMin = colliderBounds.min.y;
+            float width = colliderBounds.max.x - xMin;
+            float height = colliderBounds.max.y - yMin;
+
+            // Store the bounding box information in a list or directly in your data structure
+            TomatoData tomatoData = new TomatoData
+            {
+                id = collider.gameObject.GetInstanceID(), // Use the instance ID or another unique identifier
+                bbox = new List<float> { xMin, yMin, width, height }
+            };
+
+            // Add the pre-calculated data to the list for later use
+            bbBox.Add(tomatoData);
         }
     }
+
+}
+
+public class TomatoData
+{
+    public int id;
+    public List<float> bbox;  // [x, y, width, height]
+}
+
+
+[System.Serializable]
+public class CocoDataset
+{
+    public List<CocoImage> images = new List<CocoImage>();
+    public List<CocoAnnotation> annotations = new List<CocoAnnotation>();
+    public List<CocoCategory> categories = new List<CocoCategory>();
+}
+
+[System.Serializable]
+public class CocoImage
+{
+    public int id;
+    public string file_name;
+    public int width;
+    public int height;
+}
+
+[System.Serializable]
+public class CocoAnnotation
+{
+    public int id;
+    public int image_id;
+    public int category_id;
+    public List<float> bbox;  // [x, y, width, height]
+    public float area;
+}
+
+[System.Serializable]
+public class CocoCategory
+{
+    public int id;
+    public string name;
 }

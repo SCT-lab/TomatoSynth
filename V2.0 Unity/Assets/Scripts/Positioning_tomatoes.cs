@@ -53,6 +53,7 @@ public class Positioning_tomatoes : MonoBehaviour
     
     public GameObject assetGH;
 
+    public MeshCollider[] posCollidersTomatoesGT;
     
     // Start is called before the first frame update
     void Start()

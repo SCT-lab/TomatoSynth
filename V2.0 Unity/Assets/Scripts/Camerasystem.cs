@@ -30,11 +30,16 @@ public class Camerasystem : MonoBehaviour
     public Menu2 menu2Script;
     
     public TMP_Text wayPointText;
+    public TMP_Text wayPointText1;
+
+    public float posOld = -3.12f;
+    public MeshCollider[] posCollidersTomatoesGT;
 
     void Start()
     {
         Random.InitState(1);
         tomatoPos = FindObjectOfType<Positioning_tomatoes>(); 
+        PlayerPrefs.SetFloat("RecordingSpeed", 3f);
         StartCoroutine(StartAfterDelay());
     }
 
@@ -112,7 +117,7 @@ public class Camerasystem : MonoBehaviour
             }  
             if(tomatoPos.activateGT)
             {
-                ManageRowVisibility();    
+                ManageRowVisibility();
             }             
 
             Debug.Log($"Moving to waypoint {currentWaypointIndex}: {targetPosition}");
@@ -172,6 +177,11 @@ public class Camerasystem : MonoBehaviour
         // Define the X positions for each row based on the provided coordinates
         float[] rowXPositions = { -3.12f, 7.88f, 17.88f, 24.88f, 33.88f, 49.835f, 58.88f, 67.88f, 76.88f, 85.88f };
 
+        if (transform.position.x != posOld)
+        {
+            posOld = transform.position.x;
+        } 
+
         if(transform.position.x == -3.12f)
         {
             for(int i = 0; i < tomatoPos.plantRows1.Length; i++)
@@ -187,6 +197,7 @@ public class Camerasystem : MonoBehaviour
                 tomatoPos.plantRows1[i].gameObject.SetActive(false);
             }
             tomatoPos.plantRows1[1].gameObject.SetActive(true);
+            
         }
         if(transform.position.x ==  17.88f)
         {
@@ -254,13 +265,30 @@ public class Camerasystem : MonoBehaviour
         }
     }
 
+    public void ChangeRecordingSpeed(string value)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            Debug.LogError("Input is null or empty.");
+            PlayerPrefs.SetFloat("RecordingSpeed", 3f);
+            return;
+        }
+        else if(float.TryParse(value, out float temp))
+        {
+            PlayerPrefs.SetFloat("RecordingSpeed", temp);
+            wayPointText1.text = temp.ToString("F0");
+            Debug.Log($"Capture speed set to: {temp}");
+        }
+    }
+
     public void RecordingMovement()
     {
         if (waypoints.Count >= 0)
         {
             transform.position = waypoints[0];
             currentWaypointIndex = 0;
-            menu2Script.ChangeSpeed(3f);
+            float var = PlayerPrefs.GetFloat("RecordingSpeed");
+            menu2Script.ChangeSpeed(var);
 
             StartRecording();
         }
