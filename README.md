@@ -1,4 +1,4 @@
-# TomatoSynth V1.0
+# TomatoSynth V2.0
 ![TomatoSynth Visual Example](https://github.com/SCT-lab/TomatoSynth/blob/main/Images/greenhouse3.png)
 
 
@@ -19,16 +19,75 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
 </p>
 
 ## Installation
-TomatoSynth can be run as an .exe file for Windows, or as a Unity package, where it can be further edited and exported in different formats.
+<p>
+  TomatoSynth can be used either as a <strong>standalone Windows application (.exe)</strong>
+  or as a <strong>Unity project</strong>, which allows further editing and export to different formats.
+</p>
 
-<b>1a)</b> <u>Application:</u> unzip the file within the TomatoSynth Data folder titled <B>"1. Unzip_first.zip"</b>. Unzip the files within the Data folder - not in a new folder.<br>
-<b>1b)</b> The recording data will be put within the TomatoSynth_Data folder in two folders titled Screenshot and ScreenshotGT.<br>
+<h3>1. Standalone Application (Windows)</h3>
 
-<b>2a)</b> <u>Unity:</u> content of the V2.0 Unity folder can be added in Unity Hub. Unity version <b>2022.23f1</b> needs to be installed on the PC. Older versions might work too.<br>
-<b>2b)</b> Upon launching for the first time, packages need to be installed. This might take some time. The Unity scene can be found in the <u>Assets - Scenes folder (Menu / StartScene)</u>.
+<p>
+  <strong>1a. Unzip required files</strong><br>
+  Locate the file <strong>"1. Unzip_first.zip"</strong> inside the <em>TomatoSynth Data</em> folder.
+  Unzip its contents <strong>directly into the Data folder</strong> (do not create a new subfolder).
+</p>
 
-When launching the application or running the software within Unity itself, a script (Positioning_tomatoes) takes the input tomato models (three prefabs total) and places them in rows. For each compartment, unique tomato models can be given as input. Variation in the rows is realised by starting each row on a different start position (difference of 2 cm compared to previous row); and each plant in the row is given a 45 degrees difference to its neighbour. 
+<p>
+  <strong>1b. Output data location</strong><br>
+  Recorded data will be stored in the <code>TomatoSynth_Data</code> folder, in two subfolders:
+</p>
 
+<ul>
+  <li><code>Screenshot</code></li>
+  <li><code>ScreenshotGT</code></li>
+</ul>
+
+<h3>2. Unity Project</h3>
+
+<p>
+  <strong>2a. Add project to Unity Hub</strong><br>
+  Add the contents of the <strong>V2.0 Unity</strong> folder to Unity Hub.
+  Unity version <strong>2022.23f1</strong> is recommended, although older versions may also work.
+</p>
+
+<p>
+  <strong>2b. First launch setup</strong><br>
+  On the first launch, Unity will install the required packages. This may take some time.
+  The main Unity scene can be found at:
+</p>
+
+<p>
+  <strong>Assets → Scenes → Menu → StartScene</strong>
+</p>
+
+<h3>Scene Behavior and Tomato Placement</h3>
+
+<p>
+  When launching the standalone application or running the project in Unity, the script
+  <code>Positioning_tomatoes</code> processes the input tomato models (three prefabs in total)
+  and places them in rows.
+</p>
+
+<ul>
+  <li>Each compartment can receive a unique tomato model.</li>
+  <li>
+    Row variation is achieved by:
+    <ul>
+      <li>Offsetting each row’s starting position by <strong>2 cm</strong> relative to the previous row.</li>
+      <li>Rotating each tomato by <strong>45°</strong> relative to its neighboring plant.</li>
+    </ul>
+  </li>
+</ul>
+
+
+<h2>License</h2>
+<p>
+  Copyright (c) 2024 Social Creative Technologies Lab, Wageningen University
+</p>
+
+<p>
+  This project is licensed under the <strong>MIT License</strong>. You are free to use, modify, and distribute this software and documentation, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software.
+</p>
 
 ## Development Work
 Development work by Corné Talen and Juriaan Wolfers, project managed by Will Hurst (will.hurst@wur.nl) and Gert Kootstra (gert.kootstra@wur.nl).
