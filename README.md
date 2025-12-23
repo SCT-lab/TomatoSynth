@@ -89,11 +89,46 @@ The FSP models benchmark tomato plants were created using the 3D modelling platf
   This project is licensed under the <strong>MIT License</strong>. You are free to use, modify, and distribute this software and documentation, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software.
 </p>
 
-## Development Work
-Development work by Corné Talen and Juriaan Wolfers, project managed by Will Hurst (will.hurst@wur.nl) and Gert Kootstra (gert.kootstra@wur.nl).
+<h2>Development Work</h2>
 
-You are free to use this project for academic research but please reference this project as follows:
-[Corné Talen, Juriaan Wolfers, William Hurst, Gert Kootstra, TomatoSynth V1.1, Social Creative Technologies Lab, Wageningen University, 2024, https://github.com/SCT-lab/TomatoSynth]
+<p>
+  Development work was carried out by <strong>Corné Talen</strong> and
+  <strong>Juriaan Wolfers</strong>.
+</p>
+
+<p>
+  The project was managed by:
+</p>
+
+<ul>
+  <li>
+    <strong>William Hurst</strong> —
+    <a href="mailto:will.hurst@wur.nl">will.hurst@wur.nl</a>
+  </li>
+  <li>
+    <strong>Gert Kootstra</strong> —
+    <a href="mailto:gert.kootstra@wur.nl">gert.kootstra@wur.nl</a>
+  </li>
+</ul>
+
+<h3>Usage and Citation</h3>
+
+<p>
+  You are free to use this project for academic research. If you do so,
+  please reference the project as follows:
+</p>
+
+<p>
+  <em>
+    Corné Talen, Juriaan Wolfers, William Hurst, Gert Kootstra,
+    <strong>TomatoSynth V2.0</strong>, Social Creative Technologies Lab,
+    Wageningen University, 2024,
+    <a href="https://github.com/SCT-lab/TomatoSynth">
+      https://github.com/SCT-lab/TomatoSynth
+    </a>
+  </em>
+</p>
+
 
 <p align="center">
   <a href="https://www.linkedin.com/company/sct-lab"><img src="https://github.com/SCT-lab/DigiFungi/blob/main/images/SCT-WUR.png" alt="SCT Lab" width="100"></a>
