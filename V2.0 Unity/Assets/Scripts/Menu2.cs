@@ -32,40 +32,49 @@ public class Menu2 : MonoBehaviour
     private int numSpeedUp = 0;
 
     public RecordingScreenshots recordingScreenshots;
-    //UnityEditor.Recorder.ImageRecorderSettings
-    // Recorder settings
-    // public ImageRecorderSettings recorderControllerSettings;
-    // private RecorderController recorderController;
 
-    // Start is called before the first frame update
     void Start()
     {
-/*         recorderControllerSettings = ScriptableObject.CreateInstance<RecorderControllerSettings>();
-        recorderController = new RecorderController(recorderControllerSettings);
-        speedSlider.onValueChanged.AddListener(ChangeSpeed);
+        if(Menu.Instance != null)
+        {
+            Menu mainMenu = FindObjectOfType<Menu>();
+            Menu.Instance.UpdateFirstEntry();
+            TMP_Dropdown dropdown = objectsUI[1].GetComponentInChildren<TMP_Dropdown>();
+            Resolution[] resolution = Screen.resolutions;
+            Resolution highestResolution = resolution[resolution.Length - 1];
+            string text = $"Highest available ({highestResolution.width} x {highestResolution.height})";
+            
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData { text = text };
+            if (dropdown.options.Count == 0 || dropdown.options[0].text != text)
+                dropdown.options.Insert(0, option);
+        }
+        if (!PlayerPrefs.HasKey("CompressionValue"))
+            PlayerPrefs.SetInt("CompressionValue", 25);
 
-         ImageRecorderSettings imageRecorder = ScriptableObject.CreateInstance<ImageRecorderSettings>();
-         imageRecorder.name = "Image Sequence Recorder";
-         imageRecorder.Enabled = true;
+        if (!PlayerPrefs.HasKey("Waypoints"))
+            PlayerPrefs.SetFloat("Waypoints", 129);
 
-        // // Set the output directory to the executable path or any desired path
-         string outputPath = Application.isEditor ? Application.dataPath : System.IO.Path.GetDirectoryName(Application.dataPath);
-         imageRecorder.OutputFile = outputPath + "/ImageSequence/frame_{frame}.jpg";
 
-        // // Set the image format to JPEG and frame rate to 2 FPS
-         imageRecorder.imageInputSettings = new GameViewInputSettings();
-         imageRecorder.OutputFormat = ImageRecorderSettings.ImageRecorderOutputFormat.JPEG;
-         imageRecorder.FrameRatePlayback = FrameRatePlayback.Constant;
-         imageRecorder.RecordMode = RecordMode.Manual;
-         imageRecorder.FrameRate = 2;
-
-        recorderControllerSettings.AddRecorderSettings(imageRecorder);
-        recorderControllerSettings.SetRecordModeToManual();     */    
-        PlayerPrefs.SetInt("CompressionValue", 25);
-        PlayerPrefs.SetFloat("Waypoints", 129);
+        ApplySettings();
+        bool fullscreen = PlayerPrefs.GetInt("FullscreenEnabled", 1) == 1;
     }
 
-    // Update is called once per frame
+    void ApplySettings()
+    {
+        int compression = PlayerPrefs.GetInt("CompressionValue", 25);
+        textCompressionSlider.text = compression.ToString("F0");
+
+        int res = PlayerPrefs.GetInt("ResolutionImage", 0);
+        ChangeResolution(res);
+    }
+
+    void RefreshQualityUI()
+    {
+        Menu menu = FindObjectOfType<Menu>();
+        if(menu != null)
+            menu.UpdateFirstEntry(); // Updates quality buttons + colors
+    }
+
     private void Update()
     {
         if(!paused)
