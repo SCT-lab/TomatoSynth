@@ -40,7 +40,12 @@ public class Menu : MonoBehaviour
     public PostProcessVolume PostProcessVolume;
     private ColorGrading colorGrading;
     public PostProcessLayer postProcessLayer;
-    
+    public static Menu Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
     
     //public ChangeFont changeFontAsset;
 
@@ -73,6 +78,11 @@ public class Menu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(ChangeMouseSensitivity);
         gammaSlider.onValueChanged.AddListener(ChangeContrast);
 
+        float db = PlayerPrefs.GetFloat("MasterDB", 0f);
+        masterMixer.SetFloat("Master", db);
+        volumeSlider.value = Mathf.Pow(10, db / 20f);
+
+        UpdateFirstEntry();
         Debug.Log(toggleUI.isOn);
     }
 
@@ -92,11 +102,8 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
         audioSource.Play();
-        UpdateFirstEntry();
-        firstEntry = false;
-
+        SceneManager.LoadScene(1);
     }
 
     public void Options()
@@ -242,6 +249,9 @@ public class Menu : MonoBehaviour
 
     public void UpdateFirstEntry()
     {
+        bool previousFirstEntry = firstEntry;
+        firstEntry = true;
+
         ResolutionChange(numRes);
 
         int currentQualityLevel = QualitySettings.GetQualityLevel();
@@ -301,13 +311,13 @@ public class Menu : MonoBehaviour
     public void ResolutionChange(int numResolution)
     {
 
-        if(numResolution == 0)
+        if (numResolution == 0)
         {
             Resolution[] resolution = Screen.resolutions;
             Resolution highestResolution = resolution[resolution.Length - 1];
             widthRes = highestResolution.width;
             heightRes = highestResolution.height;
-            
+            numRes = 0;
         }
         else if(numResolution == 1)
         {
@@ -345,7 +355,9 @@ public class Menu : MonoBehaviour
             numRes = 5;
         }
 
-        Screen.SetResolution(widthRes, heightRes, fullScreenEnabled);
+        bool fullscreen = PlayerPrefs.GetInt("FullscreenEnabled", 1) == 1;
+        Screen.SetResolution(widthRes, heightRes, fullscreen);
+
         PlayerPrefs.SetInt("ResolutionIndex", numRes);
         PlayerPrefs.Save();
     }
